@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-todo-app
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-todo-app
+  template:
+    metadata:
+      labels:
+        app: simple-todo-app
+    spec:
+        # Secret for IBM Cloud Container Registry
+      containers:
+      - name: simple-todo-app
+        image: kruthiml/simple-todo-app:latest  # Docker Image
+        ports:
+        - containerPort: 80  # Port inside the container 
