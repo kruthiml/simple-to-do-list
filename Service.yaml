@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-todo-service
+  
+spec:
+  type: NodePort  # Exposes the service on a specific port accessible outside the cluster
+  selector:
+    app: simple-todo-app
+  ports:
+  - protocol: TCP
+    port: 5004       # The service's internal port
+    targetPort: 80  # The container's exposed port
+    nodePort: 30200 # The port accessible on the node (must be between 30000-32767)
